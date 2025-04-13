@@ -1,6 +1,9 @@
 from transformers import AutoTokenizer
+import json
 
 if __name__ == "__main__":
+    model_tokenizer_map = {}
+    name = "llama_3-123"
     models = [
         "meta-llama/Llama-3.1-8B",
         "meta-llama/Llama-3.1-8B-Instruct",
@@ -25,8 +28,11 @@ if __name__ == "__main__":
         else:
             print(f"Tokenizer for {model} matches the reference.")
 
+        model_tokenizer_map[model] = name
+
     print("========================================")
 
+    name = "llama_3"
     models = [
         "meta-llama/Meta-Llama-3-8B",
         "meta-llama/Meta-Llama-3-8B-Instruct",
@@ -44,8 +50,10 @@ if __name__ == "__main__":
             print(f"Tokenizer for {model} does NOT match the reference.")
         else:
             print(f"Tokenizer for {model} matches the reference.")
+        model_tokenizer_map[model] = name
 
     print("========================================")
+    name = "olmo"
     models = [
         "allenai/OLMo-7B-0724-hf",
         "allenai/OLMo-7B-0724-Instruct-hf",
@@ -63,7 +71,10 @@ if __name__ == "__main__":
             print(f"Tokenizer for {model} does NOT match the reference.")
         else:
             print(f"Tokenizer for {model} matches the reference.")
+        model_tokenizer_map[model] = name
+
     print("========================================")
+    name = "olmo_2"
     models = [
         "allenai/OLMo-2-1124-7B",
         "allenai/OLMo-2-1124-13B",
@@ -80,7 +91,10 @@ if __name__ == "__main__":
             print(f"Tokenizer for {model} does NOT match the reference.")
         else:
             print(f"Tokenizer for {model} matches the reference.")
+        model_tokenizer_map[model] = name
+
     print("========================================")
+    name = "gemma_3"
     models = [
         "google/gemma-3-1b-pt",
         "google/gemma-3-1b-it",
@@ -101,7 +115,11 @@ if __name__ == "__main__":
             print(f"Tokenizer for {model} does NOT match the reference.")
         else:
             print(f"Tokenizer for {model} matches the reference.")
+        model_tokenizer_map[model] = name
+
     print("========================================")
+
+    name = "gemma_2"
     models = [
         "google/gemma-2-2b",
         "google/gemma-2-2b-it",
@@ -120,3 +138,12 @@ if __name__ == "__main__":
             print(f"Tokenizer for {model} does NOT match the reference.")
         else:
             print(f"Tokenizer for {model} matches the reference.")
+        model_tokenizer_map[model] = name
+
+    print("========================================")
+    print("Tokenizer model map:")
+    for model, name in model_tokenizer_map.items():
+        print(f"{model}: {name}")
+
+    with open("/home/shailyjb/ppp/model_tokenizer_map.json", "w") as f:
+        json.dump(model_tokenizer_map, f, indent=4)
