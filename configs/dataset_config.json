@@ -1,0 +1,7 @@
+{
+	"govreports": {
+		"tokenized_data_directory": "/data/tir/projects/tir5/users/shailyjb/ppp/tokenized_data/govreports",
+		"split_name": "0_1000_test",
+		"token_metrics_data_directory": "/data/tir/projects/tir5/users/shailyjb/ppp/token_metrics/govreports"
+	}
+}
